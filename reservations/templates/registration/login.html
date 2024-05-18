@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <style>
+      /* Form Container */
+      .form-container {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+        margin-top: 50px;
+      }
+
+      /* Form Title */
+      .form-title {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      /* Form Input Fields */
+      .form-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      /* Form Submit Button */
+      .form-button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Form Submit Button Hover Effect */
+      .form-button:hover {
+        background-color: #45a049;
+      }
+
+      /* Form Link */
+      .form-link {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      /* Form Link Color */
+      .form-link a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      /* Form Link Hover Effect */
+      .form-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <title>Reservations</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2 class="form-title">Login</h2>
+      <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="form-button">Login</button>
+      </form>
+
+      <div class="form-link">
+        <a href="#">Forgot password?</a>
+      </div>
+    </div>
+     
+  </body>
+</html>

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <title>Reservations</title>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      {% include './left_nav.html' %}
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h1>Equipments types</h1>
+        <div class="btns">
+
+        <a href="{% url 'new_equipment_type' %}" class="new_btn">
+            New
+        </a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Quantity</th>
+              <th>
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for equipment_type in equipments_types %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ equipment_type.name }}</td>
+              <td>{{ equipment_type.description }}</td>
+              <td>{{ equipment_type.equipment.count }}</td>
+              <td>
+                <a href="{% url 'update_equipment_type' equipment_type.id %}">Update</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

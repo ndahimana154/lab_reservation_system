@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <title>Reservations</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      {% include './left_nav.html' %}
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Welcome message -->
+        <h2>Welcome to the Dashboard</h2>
+        <p>
+          This is where you can manage your reservations, equipment, and users.
+        </p>
+
+        <!-- Board displaying totals -->
+        <div class="total-board">
+          <h3>Total Equipments</h3>
+          <p>100</p>
+        </div>
+        <!-- Add other total boards as needed -->
+      </div>
+    </div>
+  </body>
+</html>

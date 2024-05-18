@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Management System</title>
+</head>
+<body>
+    <h1>Lab Equipment Types</h1>
+    <ul>
+        {% for type in equipment_types %}
+            <li>{{ type.name }}</li>
+            <ul>
+                {% for equipment in type.equipment.all %}
+                    <li><a href="{% url 'equipment_detail' equipment.id %}">{{ equipment.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>
