@@ -30,6 +30,7 @@ class Reservation(models.Model):
     reserved_quantity = models.PositiveIntegerField()
     reserved_date = models.DateTimeField(auto_now_add=True)
     confirmed = models.BooleanField(default=False)
-
+    is_returned = models.BooleanField(default=False)
+    
     def __str__(self):
         return f"{self.user.username} - {self.equipment.name}"

@@ -14,25 +14,47 @@
     <style></style>
   </head>
   <body>
+    {% if user.is_authenticated %}
     <div class="dashboard-container">
-      <!-- Sidebar -->
       {% include './left_nav.html' %}
+      {% if user.role == 'standard' %}
+      <div class="main-content">
+        <!-- Welcome message -->
+        <h2>Available equipments, "{{user.role}} - {{user.username}}"</h2>
+        <p>
+          Now you can request for an equipment.
+        </p>
+
+        <!-- Board displaying totals -->
+        <div class="total-boards">
+          <div class="total-board">
+            <h3>Total Equipments</h3>
+            <p>{{ total_equipments }}</p>
+          </div>
+        </div>
+        <!-- Add other total boards as needed -->
+      </div>
+
+      {% else %}
 
       <!-- Main Content -->
       <div class="main-content">
         <!-- Welcome message -->
-        <h2>Welcome to the Dashboard</h2>
+        <h2>Welcome to the Dashboard, "{{user.role}}"</h2>
         <p>
           This is where you can manage your reservations, equipment, and users.
         </p>
 
-        <!-- Board displaying totals -->
-        <div class="total-board">
-          <h3>Total Equipments</h3>
-          <p>100</p>
+        <div class="total-boards">
+          <div class="total-board">
+            <h3>Total Equipments</h3>
+            <p>{{ total_equipments }}</p>
+          </div>
         </div>
-        <!-- Add other total boards as needed -->
       </div>
+      {% endif %} {% else %}
+      <div class="">User not logged in.</div>
+      {% endif %}
     </div>
   </body>
 </html>

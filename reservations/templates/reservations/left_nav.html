@@ -2,12 +2,18 @@
   <ul>
     <li><a href="{% url 'home' %}">Home</a></li>
     <li><a href="{% url 'equipments' %}">Equipments</a></li>
+    {% if user.role == 'standard' %}
+    <li><a href="{% url 'client_reservations' %}">Reservations</a></li>
+
+    {% else %}
     <li><a href="{% url 'equipments_types' %}">Equipments Types</a></li>
-    <form action="{% url 'logouts' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
+    <li><a href="{% url 'reservations_view' %}">Reservations</a></li>
+    {%endif%}
+    <form action="{% url 'logouts' %}" method="post" class="logout_form">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
     </form>
-    
+
     <!-- Add other sidebar links here -->
   </ul>
 </div>

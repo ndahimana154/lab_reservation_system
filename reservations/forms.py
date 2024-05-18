@@ -25,3 +25,17 @@ class LabEquipmentForm(forms.ModelForm):
     class Meta:
         model = LabEquipment
         fields = ['name', 'description', 'quantity', 'type']
+        
+        
+
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'password1', 'password2','role')
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        # user.role = 'Standard User'  # Set the role to 'standard'
+        if commit:
+            user.save()
+        return user

@@ -65,6 +65,8 @@
 /* Dashboard Container */
 .dashboard-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   max-width: 1200px;
   margin: auto;
   padding: 20px;
@@ -107,12 +109,19 @@
 }
 
 /* Total Board */
+.total-boards {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .total-board {
   background-color: #008000; /* green */
   color: #fff;
   padding: 10px;
   border-radius: 5px;
   margin-top: 20px;
+  width: 300px;
 }
 
 .total-board h3 {
@@ -124,19 +133,14 @@
 }
 
 table {
-
 }
 table thead {
-    background: #45a049;
+  background: #45a049;
 }
 table thead th {
-    padding: 10px;
-    color: #fff;
+  padding: 10px;
+  color: #fff;
 }
-
-
-
-
 
 .btns {
   padding: 10px;
@@ -147,4 +151,13 @@ table thead th {
   text-decoration: none;
   color: #fff;
   border-radius: 5px;
+}
+
+.logout_form button {
+  background: #323cc8;
+  border: 0;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
 }

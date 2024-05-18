@@ -24,4 +24,19 @@ urlpatterns = [
     path('equipment/<int:pk>/', views.equipment_detail, name='equipment_detail'),
     path('reserve/<int:pk>/', views.reserve_equipment, name='reserve_equipment'),
     path('logout/', views.logout_for_tech, name='logouts'),
+    
+    
+    
+    path('', views.home, name='index'),
+    
+    
+    
+    # Clients routes
+    path('signup/', views.signup, name='signup'),
+    path('request_equipment/<int:equipment_id>/', views.request_equipment_view, name='request_equipment_user'),
+path('reservations/',views.view_reservations,name='reservations_view'),
+path('user_reservations/',views.view_user_reservations,name='client_reservations'),
+path('confirm_reservation/<int:reservation_id>/',views.confirm_reservation,name='confirm_reservation'),
+ path('mark_return/<int:reservation_id>/', views.mark_return, name='mark_return'),
+
 ]

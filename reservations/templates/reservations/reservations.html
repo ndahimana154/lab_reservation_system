@@ -18,7 +18,7 @@
 
       <!-- Main Content -->
       <div class="main-content">
-        <h1>Equipments</h1>
+        <h1>Recent Reservations</h1>
         <div class="btns">
           {% if user.role == '!standard' %}
 
@@ -29,32 +29,35 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Quantity</th>
-              <th>Type</th>
-              <th>Availability status</th>
+              <th>Equipment</th>
+              <th>User</th>
+              <th>Requested quantity</th>
+              <th>Date & time</th>
+              <th>Confirmed?</th>
+              <th>Returned?</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {% for equipment in equipments %}
+            {% for reser in reservations %}
             <tr>
               <td>{{ forloop.counter }}</td>
-              <td>{{ equipment.name }}</td>
-              <td>{{ equipment.description }}</td>
-              <td>{{ equipment.quantity }}</td>
-              <td>{{ equipment.type }}</td>
-              <td>{{ equipment.quantity|yesno:"Available,Not Available" }}</td>
+              <td>{{ reser.equipment }}</td>
+              <td>{{ reser.user.username }}</td>
+              <td>{{ reser.reserved_quantity }}</td>
+              <td>{{ reser.reserved_date }}</td>
+              <td>{% if reser.confirmed %}Yes{% else %}No{% endif %}</td>
+              <td>{% if reser.is_returned %}Yes{% else %}No{% endif %}</td>
+
               <td>
-                {% if user.role == 'standard' %} {% if equipment.quantity > 0 %}
-                <a href="{% url 'request_equipment_user' equipment.id %}">Request</a>
-                {% else %} Out of stock {% endif %} {%else%}
-                <a href="{% url 'update_equipment' equipment.id %}">Update</a>
-                <a href="{% url 'delete_equipment' equipment.id %}">Delete</a>
+                {% if not reser.confirmed %}
+                <a href="{% url 'confirm_reservation' reser.id %}">Confirm</a>
+                {% elif not reser.is_returned %}
+                <a href="{% url 'mark_return' reser.id %}">Mark return</a>
+                {% else %} Returned {% endif %}
               </td>
-              {%endif%}
             </tr>
+
             {% endfor %}
           </tbody>
         </table>

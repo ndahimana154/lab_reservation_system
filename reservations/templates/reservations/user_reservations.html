@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <title>Reservations</title>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      {% include './left_nav.html' %}
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h1>My  recent Reservations</h1>
+        <div class="btns">
+          {% if user.role == '!standard' %}
+
+          <a href="{% url 'create_equipment' %}" class="new_btn"> new </a>
+          {%endif%}
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Equipment</th>
+              <th>User</th>
+              <th>Requested quantity</th>
+              <th>Date & time</th>
+              <th>Confirmed?</th>
+              <th>Returned?</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for reser in user_reservations %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ reser.equipment }}</td>
+              <td>{{ reser.user.username }}</td>
+              <td>{{ reser.reserved_quantity }}</td>
+              <td>{{ reser.reserved_date }}</td>
+              <td>{% if reser.confirmed %}Yes{% else %}No{% endif %}</td>
+              <td>{% if reser.is_returned %}Yes{% else %}No{% endif %}</td>
+
+            
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

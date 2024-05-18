@@ -3,6 +3,7 @@ from django.urls import path,include # type: ignore
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('lab_tech/', include('reservations.urls')),
+    path('', include('reservations.urls')),
+    # path('lab_tech/', include('reservations.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
