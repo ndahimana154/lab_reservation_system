@@ -106,7 +106,8 @@ def create_equipment(request):
     # Return a JSON response indicating success
     return redirect('equipments')
 
-
+def logout_for_tech(request):
+    return redirect('login')
 
 
 

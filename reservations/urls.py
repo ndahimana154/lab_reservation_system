@@ -1,4 +1,5 @@
 from django.urls import path # type: ignore
+from django.contrib.auth import views as auth_views # type: ignore
 from . import views
 
 urlpatterns = [
@@ -22,4 +23,5 @@ urlpatterns = [
      path('update/<int:equipment_type_id>/', views.update_equipment_type_view, name='update_equipment_type'),
     path('equipment/<int:pk>/', views.equipment_detail, name='equipment_detail'),
     path('reserve/<int:pk>/', views.reserve_equipment, name='reserve_equipment'),
+    path('logout/', views.logout_for_tech, name='logouts'),
 ]
