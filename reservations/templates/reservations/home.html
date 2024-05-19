@@ -16,14 +16,11 @@
   <body>
     {% if user.is_authenticated %}
     <div class="dashboard-container">
-      {% include './left_nav.html' %}
-      {% if user.role == 'standard' %}
+      {% include './left_nav.html' %} {% if user.role == 'standard' %}
       <div class="main-content">
         <!-- Welcome message -->
         <h2>Available equipments, "{{user.role}} - {{user.username}}"</h2>
-        <p>
-          Now you can request for an equipment.
-        </p>
+        <p>Now you can request for an equipment.</p>
 
         <!-- Board displaying totals -->
         <div class="total-boards">
