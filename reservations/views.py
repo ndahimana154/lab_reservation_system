@@ -52,10 +52,12 @@ def user_login(request):
 
 def home_view (request):
     total_equipments = LabEquipment.objects.count()
+    total_reservations = Reservation.objects.count()
     equipment_list = LabEquipment.objects.all() if request.user.is_authenticated and request.user.role == 'standard' else []
     context = {
         'total_equipments': total_equipments,
         'equipment_list': equipment_list,
+        'total_reservations': total_reservations
     }
     return render(request,'reservations/home.html',context)
 
@@ -281,7 +283,7 @@ def request_equipment_view(request, equipment_id):
 
 def view_reservations(request):
      # Fetch all reservations
-    reservations = Reservation.objects.all()
+    reservations = Reservation.objects.all().order_by('-reserved_date')
 
     # You can further process the reservations or pass them directly to the template
     context = {
@@ -294,7 +296,7 @@ def view_reservations(request):
 
 def confirm_reservation(request,reservation_id):
     # Retrieve the reservation object
-    reservation = Reservation.objects.get(id=reservation_id).order_by('-reserved_date')
+    reservation = Reservation.objects.get(id=reservation_id)
 
     # Confirm the reservation
     reservation.confirmed = True

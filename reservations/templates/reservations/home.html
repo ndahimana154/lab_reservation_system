@@ -40,7 +40,7 @@
       <!-- Main Content -->
       <div class="main-content">
         <!-- Welcome message -->
-        <h2>Welcome to the Dashboard, "{{user.role}}"</h2>
+        <h2>Welcome to the Dashboard, "{{user.role}} - {{user.username}}"</h2>
         <p>
           This is where you can manage your reservations, equipment, and users.
         </p>
@@ -49,6 +49,10 @@
           <div class="total-board">
             <h3>Total Equipments</h3>
             <p>{{ total_equipments }}</p>
+          </div>
+          <div class="total-board">
+            <h3>Total Reservations</h3>
+            <p>{{ total_reservations }}</p>
           </div>
         </div>
       </div>
