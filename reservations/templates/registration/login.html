@@ -10,6 +10,18 @@
       href="{% static 'css/style.css' %}"
     />
     <style>
+        nav {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #4caf50;
+        font-weight: bold;
+      }
+
       /* Form Container */
       .form-container {
         background-color: #f2f2f2;
@@ -75,6 +87,11 @@
   </head>
   <body>
     <div class="form-container">
+      <nav>
+        <a href="{% url 'login' %}">Login</a> |
+        <a href="{% url 'signup' %}">Create Account</a>
+      </nav>
+
       <h2 class="form-title">Login</h2>
       <form method="POST">
         {% csrf_token %} {{ form.as_p }}

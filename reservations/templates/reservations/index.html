@@ -73,10 +73,16 @@
   <body>
     <div class="container">
       <header>
-        <h1>Welcome to the Lab Reservation System</h1>
+        <h1>Welcome to the Management and Reservation System</h1>
         <p>Welcome, Guest!</p>
       </header>
-
+      <div class="hero">
+        <img
+          src="{% static './images/bg.jpg' %}"
+          alt="Background Image"
+          width="100%"
+        />
+      </div>
       <nav>
         <a href="{% url 'login' %}">Login</a> |
         <a href="{% url 'signup' %}">Create Account</a>
